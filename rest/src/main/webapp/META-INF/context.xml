@@ -1,0 +1,16 @@
+<Context>
+    <Resource 
+        name="jdbc/DsFoodParkingDB" 
+        auth="Container" 
+        type="javax.sql.DataSource" 
+        username="root" 
+        password="NIRyw9Vb16"         
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/foodparking"
+        maxActive="20"
+        maxIdle="10"
+        maxWait="-1"
+        />
+</Context>
+
+
