@@ -1,21 +1,55 @@
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />		
+		<meta name="title" content="Food Parking - Coming Soon">
+		<meta name="url" content="http://www.foodparking.com">
+		<meta name="description" content="www.foodparking.com">
+		<meta name="keywords" content="food, truck,burger,bier,hamburguer">
+		<meta name="autor" content="Bruno Kluever Koneski">
+		<meta name="revisit-after" content="10">
+		<link href="resources/images/favicon/parking.ico" type="image/x-icon" rel="shortcut icon">
+		<link href="resources/images/favicon/parking.ico" type="image/x-icon" rel="icon">
+		<link rev=made href="mailto:bruno@koneski.org.br">
+		<meta charset='utf-8' />
+		<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+
 		<title>
 		Coming Soon
 		</title>
+
+		<style>
+			body{
+				border:0px;
+
+			}
+			.img-temp{
+				width: 30%;
+				display: block;
+				margin: auto;
+				padding-top: 5%;
+			}
+		</style>	
 	</head>
-	<style>
-	img{
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-top: -250px;
-		margin-left: -250px;
-	}
-	</style>
-	<body>
 	
-		<img src="ilove.jpg">
-		
+	<body>	
+		<img class="img-temp" src="resources/images/temp/ilove.jpg">
 	</body>
+
+	<script src="resources/js/jquery-1.11.1.min.js"></script>
+	<script src="resources/js/FP.js"></script>
+	<script>		
+		function teste(){
+			FP.get({
+				url: "rest/teste/teste", 
+				success: function( data ) {
+					console.dir(data);					
+				}
+			});		
+		}
+
+		$(function() {
+			 teste();
+		});
+
+	</script>
 </html>
