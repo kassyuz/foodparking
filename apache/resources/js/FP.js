@@ -1,6 +1,6 @@
-FP = {};
+FP = {
 
-FP.failHandler = function(args){
+failHandler: function(args){
 	if(!args.getResponseHeader=== undefined && !args.status=== undefined && !args.responseText=== undefined){
 		if($.isFunction(args.getResponseHeader)){
 			var contentType = args.getResponseHeader('Content-Type');
@@ -30,9 +30,9 @@ FP.failHandler = function(args){
 	else {
 	    alert(args.responseText);
 	}
-};
+},
 
-FP.ajaxOpt= function(){
+ajaxOpt: function(){
 	var opts = { 
 		url: null,
 		dataType: 'json',
@@ -44,9 +44,9 @@ FP.ajaxOpt= function(){
 		error: FP.failHandler
 	};
 	return opts;
-};
+},
 
-FP.post = function(options){
+post: function(options){
 	var opt = FP.ajaxOpt();
 	opt.type = 'POST';
 	if(options.data){					
@@ -54,9 +54,8 @@ FP.post = function(options){
 	}
 	var config = $.extend(opt, options);
 	$.ajax(config);
-};
-
-FP.get = function(options){
+},
+get: function(options){
 	var opt = FP.ajaxOpt();
 	opt.type = 'GET';
 	if(options.data){					
@@ -64,6 +63,9 @@ FP.get = function(options){
 	}
 	var config = $.extend(opt, options);
 	$.ajax(config);
-};
+}
+
+
+}
 
 

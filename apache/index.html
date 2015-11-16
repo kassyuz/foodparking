@@ -18,38 +18,98 @@
 		</title>
 
 		<style>
-			body{
-				border:0px;
-
+			html, body { height: 100%; margin: 0; padding: 0; border: 0px; }		
+			#map { 
+				height: 100%; 
 			}
 			.img-temp{
 				width: 30%;
 				display: block;
 				margin: auto;
 				padding-top: 5%;
+				display:none;
 			}
 		</style>	
 	</head>
 	
 	<body>	
+		<div id="map"></div>
 		<img class="img-temp" src="resources/images/temp/ilove.jpg">
 	</body>
 
+	
 	<script src="resources/js/jquery-1.11.1.min.js"></script>
 	<script src="resources/js/FP.js"></script>
 	<script>		
-		function teste(){
+
+		var joinville;
+		var browserSupportFlag =  new Boolean();
+
+		var styles = [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}];
+
+
+
+
+		var map;
+		function initMap() {
+			joinville = new google.maps.LatLng(-26.299196, -48.850555);
+		  map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 14
+		  });
+		  map.setOptions({styles: styles});
+
+		  // Try W3C Geolocation (Preferred)
+		  if(navigator.geolocation) {
+			browserSupportFlag = true;
+			navigator.geolocation.getCurrentPosition(function(position) {
+			  initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+			  map.setCenter(initialLocation);
+			}, function() {
+			  handleNoGeolocation(browserSupportFlag);
+			});
+		  }
+		  // Browser doesn't support Geolocation
+		  else {
+			browserSupportFlag = false;
+			handleNoGeolocation(browserSupportFlag);
+		  }
+			map.setZoom(15);
+		}
+
+		function handleNoGeolocation(errorFlag) {
+			initialLocation = joinville;
+			if (errorFlag == true) {
+			  console.warn("Geolocation service failed.");			  
+			} else {
+			  console.warn("Your browser doesn't support geolocation. We've placed you in Siberia.");
+			}
+			map.setCenter(initialLocation);
+		  }
+
+		function getAlTrucks(){
 			FP.get({
-				url: "rest/teste/teste", 
-				success: function( data ) {
-					console.dir(data);					
+				url: "rest/truck/all", 
+				success: function( trucks ) {
+					$.each(trucks, function( index, truck ) {
+						var pos = new google.maps.LatLng(truck.latitude, truck.longitude);
+						var marker = new google.maps.Marker({
+						position: pos,
+						map: map,
+						title: truck.description,
+						icon: 'resources/images/markers/truck_blue.png',
+						animation: google.maps.Animation.DROP
+					  });	
+					});					
 				}
-			});		
+			});	
 		}
 
 		$(function() {
-			 teste();
+			 getAlTrucks();
 		});
 
 	</script>
+	<script async defer
+      src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    </script>
 </html>
