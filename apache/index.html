@@ -93,12 +93,30 @@
 					$.each(trucks, function( index, truck ) {
 						var pos = new google.maps.LatLng(truck.latitude, truck.longitude);
 						var marker = new google.maps.Marker({
-						position: pos,
-						map: map,
-						title: truck.description,
-						icon: 'resources/images/markers/truck_blue.png',
-						animation: google.maps.Animation.DROP
-					  });	
+							position: pos,
+							map: map,
+							title: truck.title,
+							label:truck.title,
+							icon: 'resources/images/markers/truck_blue.png',
+							animation: google.maps.Animation.DROP
+						  });						
+
+						var infowindow = new google.maps.InfoWindow({
+							content: "<b>"+truck.title+"</b>"
+						  });
+
+						  marker.addListener('click', function() {
+							infowindow.open(map, marker);
+							map.setZoom(map.getZoom()+1);
+							map.setCenter(marker.getPosition());							
+						});
+
+						marker.addListener('dblclick', function() {
+							infowindow.open(map, marker);
+							map.setZoom(19);							
+							map.setCenter(marker.getPosition());		
+
+						});
 					});					
 				}
 			});	
