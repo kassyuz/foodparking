@@ -1,10 +1,10 @@
 Macro para a versão 0.1 do FoodParking.
 
 **Trucker**
-* Login
-* Check-in
-* Cadastro do truck
-* Cadastro de cardápio
+1. Login
+2. Check-in
+3. Cadastro do truck
+4. Cadastro de cardápio
 
 **Usuário final - (cliente do Truck)**
 * Busca de truck
