@@ -1,4 +1,4 @@
-#** Macro para a versão 0.1 do FoodParking. **#
+#** "To Do List" para a versão 0.1 do FoodParking. **#
 
 ## Trucker ##
 
