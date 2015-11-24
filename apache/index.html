@@ -73,7 +73,10 @@
 				  var currentLocation = new google.maps.Marker({
 					position: initialLocation,
 					map: map,				
-					icon: 'resources/images/markers/bluecircle.png'
+					icon: {
+						url: 'resources/images/markers/bluecircle.png',
+						anchor: new google.maps.Point(7,7)
+					}
 				  });
 
 					var circle = new google.maps.Circle({
@@ -81,9 +84,9 @@
 						clickable: false,
 						// metres
 						radius: 150,
-						fillColor: '#fff',
+						fillColor: '#c0e8e8',
 						fillOpacity: .6,
-						strokeColor: '#313131',
+						strokeColor: '#7dcdcd',
 						strokeOpacity: .4,
 						strokeWeight: .8
 					});
@@ -126,7 +129,7 @@
 						position: pos,
 						map: map,
 						title: truck.description,
-						icon: 'resources/images/markers/truck_blue.png',
+						icon: 'resources/images/markers/Cargo32x32.png',
 						animation: google.maps.Animation.DROP
 					  });	
 
