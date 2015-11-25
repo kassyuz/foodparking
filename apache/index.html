@@ -38,8 +38,10 @@
 	</body>
 
 	
+	<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
 	<script src="resources/js/jquery-1.11.1.min.js"></script>
 	<script src="resources/js/FP.js"></script>
+	<script src="resources/js/maps.js"></script>
 	<script>		
 
 		var joinville;
@@ -60,6 +62,8 @@
 
 			currentLocation();
 			map.setZoom(15);
+
+			getAlTrucks();
 		}
 
 		function currentLocation(){
@@ -154,12 +158,8 @@
 			});	
 		}
 
-		$(function() {
-			 getAlTrucks();
-		});
+		
 
 	</script>
-	<script async defer
-      src="https://maps.googleapis.com/maps/api/js?callback=initMap">
-    </script>
+	
 </html>
