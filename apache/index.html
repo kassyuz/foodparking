@@ -58,22 +58,51 @@
 		  });
 		  map.setOptions({styles: styles});
 
-		  // Try W3C Geolocation (Preferred)
-		  if(navigator.geolocation) {
-			browserSupportFlag = true;
-			navigator.geolocation.getCurrentPosition(function(position) {
-			  initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-			  map.setCenter(initialLocation);
-			}, function() {
-			  handleNoGeolocation(browserSupportFlag);
-			});
-		  }
-		  // Browser doesn't support Geolocation
-		  else {
-			browserSupportFlag = false;
-			handleNoGeolocation(browserSupportFlag);
-		  }
+			currentLocation();
 			map.setZoom(15);
+		}
+
+		function currentLocation(){
+			// Try W3C Geolocation (Preferred)
+			  if(navigator.geolocation) {
+				browserSupportFlag = true;
+				navigator.geolocation.getCurrentPosition(function(position) {
+				  initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+				  map.setCenter(initialLocation);
+
+				  var currentLocation = new google.maps.Marker({
+					position: initialLocation,
+					map: map,				
+					icon: {
+						url: 'resources/images/markers/bluecircle.png',
+						anchor: new google.maps.Point(7,7)
+					}
+				  });
+
+					var circle = new google.maps.Circle({
+						map: map,
+						clickable: false,
+						// metres
+						radius: 150,
+						fillColor: '#c0e8e8',
+						fillOpacity: .6,
+						strokeColor: '#7dcdcd',
+						strokeOpacity: .4,
+						strokeWeight: .8
+					});
+				// attach circle to marker
+				circle.bindTo('center', currentLocation, 'position');
+
+
+
+
+				}, function() {
+				  handleNoGeolocation(browserSupportFlag);
+				});
+			  }else {
+				browserSupportFlag = false;
+				handleNoGeolocation(browserSupportFlag);
+			  }
 		}
 
 		function refresh(){
@@ -97,13 +126,12 @@
 					$.each(trucks, function( index, truck ) {
 						var pos = new google.maps.LatLng(truck.latitude, truck.longitude);
 						var marker = new google.maps.Marker({
-							position: pos,
-							map: map,
-							title: truck.title,
-							label:truck.title,
-							icon: 'resources/images/markers/truck_blue.png',
-							animation: google.maps.Animation.DROP
-						  });						
+						position: pos,
+						map: map,
+						title: truck.description,
+						icon: 'resources/images/markers/Cargo32x32.png',
+						animation: google.maps.Animation.DROP
+					  });	
 
 						var infowindow = new google.maps.InfoWindow({
 							content: "<b>"+truck.title+"</b>"
