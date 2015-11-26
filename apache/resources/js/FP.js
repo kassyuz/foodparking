@@ -70,7 +70,12 @@ FP = {
 				alert(123);
 			},
 			instance: function(){
-				return this;
+				var obj = Object.create(this);
+				for (var k in this) {
+					obj[k] = this[k]
+	            }
+				obj.init();
+				return obj;
 			}
 		},
 		extend: function(obj){
