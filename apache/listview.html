@@ -7,7 +7,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.js"></script>
 		
 
-		
 		<script type="text/javascript">
 		$(document).ready(function(){
 				var tplPlaces = $("#place-listTpl").html();
@@ -31,21 +30,17 @@
 		<div id="findPlace"  >
 			<input id="search" type="search" placeholder="Buscar" class="form-control"/>
 			
-			<script id="place-listTpl" type="text/template" >
-				
-				<div id="places" class="list-group">
-					{{#places}}
-					<a href="#" data-code-place={{id}} class="list-group-item active">
-			<h4 class="list-group-item-heading">{{description}}</h4>
-						<p class="list-group-item-text">{{address}}, {{addressNumber}}</p>
-						<p class="list-group-item-text">{{distance}} km</p>
-					</a>
-					{{/places}}
-				</div>
-	
-
-			
-		</script>
+			<div id="places" class="list-group">
+				<script id="place-listTpl" type="text/template" >
+						{{#places}}
+						<a href="#" data-code-place={{id}} class="list-group-item">
+							<h4 class="list-group-item-heading">{{description}}</h4>
+							<p class="list-group-item-text">{{address}}, {{addressNumber}}</p>
+							<p class="list-group-item-text">{{distance}} km</p>
+						</a>
+						{{/places}}
+				</script>
+			</div>
 		</div>
 
 	</body>
