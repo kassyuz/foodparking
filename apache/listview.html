@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.js"></script>
+		
+
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+				var tplPlaces = $("#place-listTpl").html();
+				Mustache.parse(tplPlaces);
+				
+				
+				var data = {"places" : [
+							{"id": 1, "description":"Pórtico OPA Bier ", "address":"Rua XV de Novembro", "addressNumber":4745, "distance":0.1},
+							{"id": 1, "description":"Pizzaria Totens Parque", "address":"Rua XV de Novembro", "addressNumber":4621, "distance":0.2},
+							{"id": 1, "description":"Expoville", "address":"Rua XV de Novembro", "addressNumber":4315, "distance":0.2},
+							{"id": 1, "description":"Toyoville Comércio de Veículos e Peças Ltda", "address":"Rua XV de Novembro", "addressNumber":4262, "distance":0.4}
+						]};
+				var returnHTML = Mustache.render(tplPlaces, data);
+				$("#findPlace").append(returnHTML);
+			});
+			
+		</script>
+	</head>
+	<body>
+		
+		<div id="findPlace"  >
+			<input id="search" type="search" placeholder="Buscar" class="form-control"/>
+			
+			<script id="place-listTpl" type="text/template" >
+				
+				<div id="places" class="list-group">
+					{{#places}}
+					<a href="#" data-code-place={{id}} class="list-group-item active">
+			<h4 class="list-group-item-heading">{{description}}</h4>
+						<p class="list-group-item-text">{{address}}, {{addressNumber}}</p>
+						<p class="list-group-item-text">{{distance}} km</p>
+					</a>
+					{{/places}}
+				</div>
+	
+
+			
+		</script>
+		</div>
+
+	</body>
+</html>
