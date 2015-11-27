@@ -1,6 +1,10 @@
 html, body { height: 100%; margin: 0; padding: 0; border: 0px; }		
 #map { 
-	height: 100%; 
+	position: absolute;
+    top: 51px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px; 
 }
 .img-temp{
 	width: 30%;
@@ -8,4 +12,8 @@ html, body { height: 100%; margin: 0; padding: 0; border: 0px; }
 	margin: auto;
 	padding-top: 5%;
 	display:none;
+}
+
+.FPnavbar{	
+    margin-bottom: 0px;
 }
