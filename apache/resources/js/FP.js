@@ -1,5 +1,10 @@
 FP = {
 
+	initMap: function() {
+		var mapDom = $("#map");
+		this.maps = FPMaps.instance({DOM:mapDom});
+	},
+
 	failHandler: function(args){
 		if(!args.getResponseHeader=== undefined && !args.status=== undefined && !args.responseText=== undefined){
 			if($.isFunction(args.getResponseHeader)){
@@ -69,10 +74,14 @@ FP = {
 			teste: function(){
 				alert(123);
 			},
-			instance: function(){
+			instance: function(parans){
+				if (parans === undefined) {
+					parans = {};
+				} 
 				var obj = Object.create(this);
-				for (var k in this) {
-					obj[k] = this[k]
+				var template = $.extend(parans,this);
+				for (var k in template) {
+					obj[k] = template[k]
 	            }
 				obj.init();
 				return obj;

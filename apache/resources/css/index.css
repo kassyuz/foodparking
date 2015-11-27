@@ -1,0 +1,11 @@
+html, body { height: 100%; margin: 0; padding: 0; border: 0px; }		
+#map { 
+	height: 100%; 
+}
+.img-temp{
+	width: 30%;
+	display: block;
+	margin: auto;
+	padding-top: 5%;
+	display:none;
+}
