@@ -1,4 +1,9 @@
-html, body { height: 100%; margin: 0; padding: 0; border: 0px; }	
+html, body { 
+	height: 100%; 
+	margin: 0; 
+	padding: 0; 
+	border: 0px; 
+}	
 
 #map { 
 	position: absolute;
@@ -15,3 +20,39 @@ html, body { height: 100%; margin: 0; padding: 0; border: 0px; }
 .userIcon{
 	font-size:16px;
 }
+
+/* BOTAO FLUTUANTE*/
+.btn-circle {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	padding: 6px 0;
+	font-size: 12px;
+	line-height: 1.428571429;
+	border-radius: 100%;
+	transition: .3s;
+	right: 7%;
+    position: fixed;
+    bottom: 7%;
+	z-index:1;
+	button::-moz-focus-inner { border: 0; }
+}
+
+.btn:focus {
+	outline: none;
+}
+
+i.glyphicon-map-marker {
+	font-size: 2em;
+}		
+
+/*.div-float-button{
+	z-index:1;
+	position:relative;
+	overflow:hidden;
+}*/
+
+
+
+
+

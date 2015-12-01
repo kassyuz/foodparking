@@ -1,0 +1,35 @@
+/***************************************************************************/
+/***************************************************************************/
+/***************************************************************************/
+/*If no CSS3, quando  a tela for menor que 500px sera carregado este estilo*/
+/***************************************************************************/
+/***************************************************************************/
+/***************************************************************************/
+
+@media only screen and (max-width: 500px) {
+	body {
+		background-color: lightblue;
+	}
+	
+	.btn-circle {
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		font-size: 12px;
+		line-height: 1.428571429;
+		border-radius: 100%;
+		transition: .3s;
+		z-index: 1;
+		bottom: 10%;
+		right: 15%;
+		button::-moz-focus-inner {border: 0;}
+	}
+
+	i.glyphicon-map-marker {
+		font-size: 1.6em;
+	}
+
+	.btn:focus {
+		outline: none;
+	}
+}
