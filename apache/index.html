@@ -79,16 +79,34 @@
 		
 		<!-- BOTAO FLUTUANTE CANTO INFERIOR DIREITO -->
 		
-		<button type="button" class="btn btn-danger btn-lg btn-circle"><i class="glyphicon glyphicon-map-marker"></i></button>
-		
-		
-		<!--div class="div-float-button">
-			
-		</div-->
-		
+		<button type="button" class="btn btn-danger btn-lg btn-circle" data-bt-checkin><i class="glyphicon glyphicon-map-marker"></i></button>			
+				
 		<!-- MAPA GERAL -->
 		<div id="map"></div>
 	</body>	
+
+
+	<script id="tmpl-modal" type="x-tmpl-mustache">
+		<div class="modal fade modal-fullscreen force-fullscreen" id="{{id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">{{title}}</h4>
+			  </div>
+			  <div class="modal-body">
+				{{content}}
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>				
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</script>
+	<script id="tmpl-modal-button" type="x-tmpl-mustache">
+		<button type="button" id="{{id}}" class="btn {{style}}">{{title}}</button>
+	</script>
 	
 	<script src="resources/3rd/jquery/jquery-1.11.3.min.js"></script>
     <script src="resources/3rd/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>	
@@ -97,4 +115,7 @@
 	<script src="resources/js/FP.js"></script>
 	<script src="resources/js/maps.js"></script>	
 	<script async defer src="https://maps.googleapis.com/maps/api/js?callback=FP.initMap"></script>
+
+
+
 </html>

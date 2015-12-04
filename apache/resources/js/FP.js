@@ -3,6 +3,23 @@ FP = {
 	initMap: function() {
 		var mapDom = $("#map");
 		this.maps = FPMaps.instance({DOM:mapDom});
+		this.bindCheckIn();
+	},
+
+	bindCheckIn: function(){
+		$("[data-bt-checkin]").bind( "click", function() {
+			var checkIn = FP.modal({
+				title:"CHECK-IN",
+				url:"listview.html",
+				buttons:[{
+					title: "CHECK-IN",
+					action: function(){
+						alert("ok");
+						checkIn.hide();
+					}
+				}]
+			});
+		});
 	},
 
 	failHandler: function(args){
@@ -79,7 +96,7 @@ FP = {
 					parans = {};
 				} 
 				var obj = Object.create(this);
-				var template = $.extend(parans,this);
+				var template = $.extend(this,parans);
 				for (var k in template) {
 					obj[k] = template[k]
 	            }
@@ -90,9 +107,98 @@ FP = {
 		extend: function(obj){
 			return $.extend({}, this.templateClass, obj);
 		}
-			
-		
-
 	},
+	lastId:0,
+	id:function(){
+		this.lastId++;
+		return "FP"+this.lastId;
+	},
+	modal: function(obj){ 
+		var modal = this.defaultClass.extend({
+			DOM:null,
+			title:"",
+			content:"",
+			buttons:[{
+				title: "111",
+				action: function(){}
+			}],
+			url: null,
+			tmplModal: $('#tmpl-modal').html(),
+			tmplModalButtons: $('#tmpl-modal-button').html(),
+				
+
+			init:function(){
+				Mustache.parse(this.tmplModal);
+				Mustache.parse(this.tmplModalButtons);
+
+				if(this.url == null){
+					this.create();
+				}else{
+					this.get();
+				}				
+			},
+			get:function(){
+				var _this = this;
+				FP.get({
+					url: _this.url, 
+					dataType: 'html',
+					success: function( content ) {
+						_this.content+=content;
+						_this.create();
+					}
+				});
+			},
+
+			create: function(){
+				var _this = this;
+				
+				this.DOM = Mustache.render(this.tmplModal, {
+					id: FP.id(),
+					title:_this.title
+				});
+				this.DOM = $(this.DOM);
+				$(this.DOM.find(".modal-body")[0]).append(_this.content);
+				$('body').append(this.DOM);
+				this.addbuttons();
+				this.addBinds();
+				this.show();
+			},
+
+			show:function(){
+				this.DOM.modal('show');
+			},
+			hide:function(){
+				this.DOM.modal('hide');
+			},	
+			addBinds:function(){
+				var _this = this;
+				this.DOM.on('hidden.bs.modal', function () {
+					_this.DOM.data('bs.modal', null);
+					$(this).remove();
+				});
+			},
+			addbuttons:function(){
+				var _this = this;
+				var divButtons = $(this.DOM.find(".modal-footer")[0]);
+				$.each(this.buttons, function( index, button ) {
+					var style = "btn-default";
+					if(_this.buttons.length == (index+1)){
+						style = "btn-primary";
+					}		
+					var btId = FP.id();
+					var bt = Mustache.render(_this.tmplModalButtons, {
+						id: btId,
+						title:button.title,
+						style: style
+					});
+						
+					divButtons.append(bt);			
+
+					_this.DOM.on('click', "#"+btId, button.action);
+				});
+			}
+		});
+		return modal.instance(obj);
+	}
 }
 
