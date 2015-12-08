@@ -7,9 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import org.hibernate.type.LobType;
 
 @Entity
 @Table(name="Truck")
@@ -26,27 +29,28 @@ public class Truck implements Serializable {
 	@Column(name="TRUCK_ID")
 	private long id;
 
-	@Column(name="TITLE")
+	@Column(name="NAME")
+	private String name;
+
+	@Column(name="DESCRIPTION")
 	private String description;
 
-	@Column(name="LATITUDE")
-	private Double latitude;
-
-	@Column(name="LONGITUDE")
-	private Double longitude;
-
+	@Lob
+	@Column(name="IMAGE")
+	private byte[] image;
+	
 	public Truck() {}
 
-	public Truck(String title) {
+	public Truck(String name) {
 		super();
-		description = title;
+		this.name = name;
 	}
 
-	public Truck(String title, Double latitude, Double longitude) {
+	public Truck(String name, String description, byte[] image ) {
 		super();
-		description = title;
-		this.latitude = latitude;
-		this.longitude=longitude;
+		this.name = name;
+		this.description = description;
+		this.image = image;
 	}
 
 	public long getId() {
@@ -57,28 +61,28 @@ public class Truck implements Serializable {
 		this.id = id;
 	}
 
-	public String getTitle() {
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
 		return description;
 	}
 
-	public void setTitle(String title) {
-		description = title;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Double getLatitude() {
-		return latitude;
+	public byte[] getImage() {
+		return image;
 	}
 
-	public void setLatitude(Double latitude) {
-		this.latitude = latitude;
-	}
-
-	public Double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(Double longitude) {
-		this.longitude = longitude;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 	@Override
