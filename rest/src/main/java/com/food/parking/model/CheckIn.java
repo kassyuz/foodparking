@@ -95,7 +95,7 @@ public class CheckIn implements Serializable {
 		this.description = description;
 	}
 
-	public Boolean getCloseEvent() {
+	public Boolean isCloseEvent() {
 		return closeEvent;
 	}
 
