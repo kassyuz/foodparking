@@ -39,6 +39,25 @@ public abstract class AbstractBO<E> {
 	}
 
 	/**
+	 * Cria uma nova entidade na base de dados
+	 * @param e Objeto a ser persistido
+	 * @throws PersistenceException lancado caso o objeto não possa ser salvo
+	 */
+	public E createReturnsEntity(E e) throws PersistenceException {
+		this.validateCreate(e);
+		try {
+			entityManager.getTransaction().begin();
+			entityManager.persist(e);
+			entityManager.flush();
+			entityManager.getTransaction().commit();
+			return e;
+		} catch (Exception ex) {
+			logger.error(ex.getMessage(), ex);
+			throw new PersistenceException("Não foi possível incluir a entidade: " + e.toString() + ex);
+		}
+	}
+	
+	/**
 	 * Exclui a entidade da base de dados
 	 * @param e Entidade a ser excluida
 	 * @throws PersistenceException lancado caso o objeto não possa ser excluido
