@@ -8,6 +8,7 @@ FP = {
 
 	bindCheckIn: function(){
 		$("[data-bt-checkin]").bind( "click", function() {
+			history.pushState(null, null, "checkin");
 			var checkIn = FP.modal({
 				title:"CHECK-IN",
 				url:"listview.html",
@@ -16,6 +17,7 @@ FP = {
 					action: function(){
 						alert("ok");
 						checkIn.hide();
+						history.back();
 					}
 				}]
 			});
@@ -40,7 +42,7 @@ FP = {
 							alert(response.message);
 							break;
 						case 404:
-							alert("Recurso não encontrado. Verifique o caminho e tente novamente.");
+							alert("Recurso nï¿½o encontrado. Verifique o caminho e tente novamente.");
 							break;
 						default:
 							alert("Erro inesperado.");
