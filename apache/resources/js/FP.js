@@ -8,18 +8,14 @@ FP = {
 
 	bindCheckIn: function(){
 		$("[data-bt-checkin]").bind( "click", function() {
-			history.pushState(null, null, "checkin");
-			var checkIn = FP.modal({
-				title:"CHECK-IN",
-				url:"listview.html",
-				buttons:[{
-					title: "CHECK-IN",
-					action: function(){
-						alert("ok");
-						checkIn.hide();
-						history.back();
-					}
-				}]
+			//history.pushState(null, "/", "checkin");
+			$("[data-bt-checkin]").bind( "click", function() {
+				var checkIn = FP.modal({
+					url: "../../checkin.html",
+					tmplModal: $("#tmpl-modal-checkin").html(),
+					tmplModalButtons: $('#tmpl-modal-button').html(),
+					
+				});
 			});
 		});
 	},
@@ -121,12 +117,12 @@ FP = {
 			title:"",
 			content:"",
 			buttons:[{
-				title: "111",
+				title: null,
 				action: function(){}
 			}],
 			url: null,
-			tmplModal: $('#tmpl-modal').html(),
-			tmplModalButtons: $('#tmpl-modal-button').html(),
+			tmplModal: "",
+			tmplModalButtons: "",
 				
 
 			init:function(){
@@ -161,7 +157,7 @@ FP = {
 				this.DOM = $(this.DOM);
 				$(this.DOM.find(".modal-body")[0]).append(_this.content);
 				$('body').append(this.DOM);
-				this.addbuttons();
+				//this.addbuttons();
 				this.addBinds();
 				this.show();
 			},

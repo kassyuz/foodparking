@@ -97,3 +97,61 @@ i.glyphicon-map-marker {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+/*model de checkin*/
+.modal-header, h4, .close {
+	background-color: #3792A0;
+	color: white !important;
+	font-size: 25px;
+}
+
+.modal-header {
+	padding: 0px;
+	padding-top: 10px;
+}
+
+.close {
+	padding: 15px !important;
+}
+
+.modal-footer {
+	background-color: #f9f9f9;
+}
+
+#profile-img {
+	border: 1px solid white;
+	width : 60px;
+	height: 60px;
+	border-radius: 90%;
+	margin: 2%;
+	float: left;
+	text-align: left !important;
+	width: 60px;
+}
+
+.address {
+	font-size: 50%;
+	color: #909090;
+	position: absolute;
+	text-align: center;
+	padding-top: 12px;
+	padding-left: 15%;
+}
+
+.btn-change-place {
+	margin-bottom: 11px;
+	width: 200px;
+	font-size: 14px;
+	padding: 4px 30px;
+}
+
