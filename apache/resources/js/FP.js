@@ -12,6 +12,7 @@ FP = {
 			var checkIn = FP.modal({
 				title:"CHECK-IN",
 				url:"listview.html",
+				iconPath: "/resources/images/markers/Cargo24x24.png",
 				buttons:[{
 					title: "CHECK-IN",
 					action: function(){
@@ -19,7 +20,13 @@ FP = {
 						checkIn.hide();
 						history.back();
 					}
-				}]
+				},{
+					title: "2222",
+					action: function(){
+						alert("ok");
+						checkIn.hide();
+						history.back();
+					}}]
 			});
 		});
 	},
@@ -120,8 +127,9 @@ FP = {
 			DOM:null,
 			title:"",
 			content:"",
+			iconPath: null,
 			buttons:[{
-				title: "111",
+				title: "",
 				action: function(){}
 			}],
 			url: null,
@@ -156,7 +164,8 @@ FP = {
 				
 				this.DOM = Mustache.render(this.tmplModal, {
 					id: FP.id(),
-					title:_this.title
+					title:_this.title,
+					iconPath:_this.iconPath
 				});
 				this.DOM = $(this.DOM);
 				$(this.DOM.find(".modal-body")[0]).append(_this.content);
@@ -183,9 +192,9 @@ FP = {
 				var _this = this;
 				var divButtons = $(this.DOM.find(".modal-footer")[0]);
 				$.each(this.buttons, function( index, button ) {
-					var style = "btn-default";
+					var style = "btn-info btn-default  pull-right";
 					if(_this.buttons.length == (index+1)){
-						style = "btn-primary";
+						style = "btn-info btn-primary  pull-right";
 					}		
 					var btId = FP.id();
 					var bt = Mustache.render(_this.tmplModalButtons, {

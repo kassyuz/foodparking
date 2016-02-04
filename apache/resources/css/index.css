@@ -129,14 +129,14 @@ i.glyphicon-map-marker {
 }
 
 #profile-img {
-	border: 1px solid white;
-	width : 60px;
-	height: 60px;
+	border: 1px solid white;	
+	height: 50px;
 	border-radius: 90%;
-	margin: 2%;
+	margin-left: 10px;
+    margin-top: -9px;
+    margin-right: 10px;
 	float: left;
 	text-align: left !important;
-	width: 60px;
 }
 
 .address {
@@ -155,3 +155,6 @@ i.glyphicon-map-marker {
 	padding: 4px 30px;
 }
 
+.modal-header{
+	padding-top: 15px;
+}

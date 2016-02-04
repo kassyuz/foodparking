@@ -91,14 +91,19 @@
 			<div class="modal-dialog">
 				<div class="modal-content">						
 					<div class="modal-header">
+						{{#iconPath}}
+							<img id="profile-img" src="{{iconPath}}" />
+						{{/iconPath}}
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<h4 class="modal-title">{{title}}</h4> 
 					</div>
 					<div class="modal-body">
 						{{content}}
 					</div>
-					 <div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>				
+					 <div class="modal-footer">						
+						<button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove"></span> Cancel
+						</button>
 					</div>
 				</div>				
 			</div>
