@@ -138,21 +138,10 @@ i.glyphicon-map-marker {
 	float: left;
 	text-align: left !important;
 }
-
-.address {
-	font-size: 50%;
-	color: #909090;
-	position: absolute;
-	text-align: center;
-	padding-top: 12px;
-	padding-left: 15%;
-}
-
-.btn-change-place {
-	margin-bottom: 11px;
-	width: 200px;
-	font-size: 14px;
-	padding: 4px 30px;
+.checkin-text{
+	
+	border: none;
+	
 }
 
 .modal-header{

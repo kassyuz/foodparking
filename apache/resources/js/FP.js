@@ -10,23 +10,25 @@ FP = {
 		$("[data-bt-checkin]").bind( "click", function() {
 			//history.pushState(null, "/", "checkin");
 			var checkIn = FP.modal({
-				title:"CHECK-IN",
-				url:"listview.html",
-				iconPath: "/resources/images/markers/Cargo24x24.png",
+				title:"em Expoville", //criar metodo para retorno do local mais proximo do usuário
+				url:"checkin.html",
+				iconPath: "/resources/images/profile50x50.png",
 				buttons:[{
 					title: "CHECK-IN",
 					action: function(){
 						alert("ok");
 						checkIn.hide();
-						history.back();
+						//history.back();
 					}
-				},{
+				}
+				/*,{
 					title: "2222",
 					action: function(){
 						alert("ok");
 						checkIn.hide();
-						history.back();
-					}}]
+					
+					}}*/
+				]
 			});
 		});
 	},

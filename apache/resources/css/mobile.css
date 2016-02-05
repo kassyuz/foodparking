@@ -5,12 +5,10 @@
 /***************************************************************************/
 /***************************************************************************/
 /***************************************************************************/
-
 @media only screen and (max-width: 500px) {
 	body {
 		background-color: lightblue;
 	}
-	
 	.btn-circle {
 		width: 60px;
 		height: 60px;
@@ -22,15 +20,57 @@
 		z-index: 1;
 		bottom: 10%;
 		right: 15%;
-		button::-moz-focus-inner {border: 0;}
+		button: :-moz-focus-inner{border: 0;
 	}
+	
 
-	i.glyphicon-map-marker {
-		font-size: 2.5em;
-		margin-left: -3px;
-	}
+	
+}
 
-	.btn:focus {
-		outline: none;
-	}
+i.glyphicon-map-marker {
+	font-size: 2.5em;
+	margin-left: -3px;
+}
+
+.btn:focus {
+	outline: none;
+}
+
+
+/*model de checkin*/
+.modal-header, h4, .close {
+	background-color: #3792A0;
+	color: white !important;
+	font-size: 25px;
+}
+
+.modal-header {
+	padding: 0px;
+	padding-top: 10px;
+}
+
+.close {
+	padding: 15px !important;
+}
+
+.modal-footer {
+	background-color: #f9f9f9;
+}
+
+#profile-img {
+	border: 1px solid white;	
+	height: 50px;
+	border-radius: 90%;
+	margin-left: 10px;
+    margin-top: -9px;
+    margin-right: 10px;
+	float: left;
+	text-align: left !important;
+}
+
+
+.modal-header{
+	padding-top: 15px;
+}
+
 }
